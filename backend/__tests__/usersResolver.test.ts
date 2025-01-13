@@ -49,7 +49,7 @@ describe("Jobs Resolver", () => {
 }
 `);
   });
-  it("should create a job only if autorised admin", async () => {
+  it("should create and read jobs only if an autorised admin", async () => {
     const res = await execute(
       addJob,
       {

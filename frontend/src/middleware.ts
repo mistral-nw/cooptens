@@ -5,13 +5,13 @@ import { jwtVerify } from "jose";
 const JWT_PRIVATE_KEY = new TextEncoder().encode(
   process.env.JWT_PRIVATE_KEY || ""
 );
-
 export async function middleware(request: NextRequest) {
   const token = request.cookies.get("token")?.value;
 
   if (token) {
     try {
       const { payload } = await jwtVerify(token, JWT_PRIVATE_KEY);
+      console.log("payload", payload);
       if (payload.userId) return NextResponse.next();
     } catch (e) {}
   }
@@ -21,5 +21,6 @@ export async function middleware(request: NextRequest) {
 
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: ["/admin/:path*", "/newAd", "/profile", "/editAd/:path*"],
+  // matcher: ["/admin/:path*", "/newAd", "/profile", "/editAd/:path*"],
+  matcher: ["/admin/:path*"],
 };

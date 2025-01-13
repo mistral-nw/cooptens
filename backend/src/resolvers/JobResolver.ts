@@ -21,7 +21,7 @@ class JobResolver {
   @Mutation(() => Job)
   async createJob(@Arg("data", { validate: true }) data: NewJobInput) {
     const existingJob = await Job.findOneBy({ jobTitle: data.jobTitle });
-    if (existingJob !== null) throw new GraphQLError("JOB_ALREADY_TAKEN");
+    if (existingJob !== null) throw new GraphQLError("JOB_ALREADY_EXIST");
 
     const newJob = new Job();
     Object.assign(newJob, data);

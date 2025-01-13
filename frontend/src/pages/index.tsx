@@ -9,7 +9,7 @@ export default function Home() {
       <Layout pageTitle="Acceuil">
         <div className="flex justify-center ">
           <video
-            className="relative"
+            className="relative "
             src="/images/vid.mp4"
             autoPlay={true}
             muted={true}
@@ -18,28 +18,30 @@ export default function Home() {
 
           {/* <div className="hero-overlay bg-opacity-60"></div> */}
           <div className="max-w-md text-center  absolute  text-white top-24">
-            <h1 className="mb-5 text-2xl font-bold">
+            <h1 className="mb-5 text-3xl font-bold">
               Cooptens, créateur d'opportunités
             </h1>
-            <p className="mb-5 hidden md:flex">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
-            </p>
+
             <div className=" flex justify-evenly">
               <Link href={"/candidants"}>
-                <button className="bg-primary p-1 px-3 rounded-lg ">
+                <button className="bg-primary p-2 px-3 rounded-lg text-xl">
                   Candidants
                 </button>
               </Link>
               <Link href={"/expertise"}>
-                <button className="bg-primary p-1 px-3 rounded-lg ">
+                <button className="bg-primary p-2 px-3 rounded-lg text-xl">
                   Entreprises
                 </button>
               </Link>
             </div>
           </div>
         </div>
+        <section className="text-center p-5">
+          <h2 className="text-2xl">
+            Cabinet de conseil en Ressources Humaines, spécialisé dans le
+            recrutement de Cadres
+          </h2>
+        </section>
         <div className="hero bg-base-200 min-h-screen">
           <div className="hero-content flex-col lg:flex-row-reverse">
             <div className="text-center lg:text-left">

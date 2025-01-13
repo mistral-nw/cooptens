@@ -1,0 +1,1 @@
+if  the deployment doesnt work change in the backend .env the name of the DB DB_NAME to the uncommented one
