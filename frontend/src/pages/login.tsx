@@ -54,10 +54,6 @@ export default function Login() {
   console.log(currentUser);
   return (
     <Layout pageTitle="Se connecter">
-      <div>
-        <p>admin@app.com</p>
-        <p>4dminAdmin@!</p>
-      </div>
       {currentUser ? (
         <div className="pt-4">
           <p>connecté en tant que {currentUser.profile.email}</p>

@@ -29,8 +29,8 @@ export async function main() {
   const admin = new User();
   Object.assign(admin, {
     nickname: "admin",
-    email: "admin@app.com",
-    password: "4dminAdmin@!",
+    email: "admin@coop.com",
+    password: "4dminAdmin@!+04",
     role: UserRole.Admin,
   });
   await admin.save();
