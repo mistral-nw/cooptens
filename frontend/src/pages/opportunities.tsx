@@ -23,17 +23,17 @@ export default function Jobs() {
     <Layout pageTitle={"opportunities"}>
       {loading ? <h1>Loading...</h1> : []}
 
-      <div className="flex justify-center py-16">
+      <div className="  flex justify-center py-20 md:py-32 lg:py-40">
         <div className=" max-w-6xl text-gray-500">
           <div className="text-center">
-            <h2 className="text-3xl text-gray-950 dark:text-white font-semibold  animate-fade-down  animate-duration-[2000ms] ">
+            <h2 className="text-3xl text-gray-900 dark:text-white font-semibold  animate-fade-down  animate-duration-[2000ms] ">
               OPPORTUNITÉS
             </h2>
             <p className="mt-6 text-gray-700 dark:text-gray-300">
               Explorer les postes récents.
             </p>
           </div>
-          <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-3 md:mx-5">
+          <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mx-6 md:mx-5">
             {jobs.map((j, idx) => {
               return (
                 <Box

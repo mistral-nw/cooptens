@@ -1,47 +1,63 @@
 // import RecentAds from "@/components/RecentAds";
 import Layout from "@/components/Layout";
-import art01 from "../assets/undraw_absorbed_in_re_ymd6.svg";
-import Footer from "@/components/Footer";
 import Link from "next/link";
+import { useEffect, useRef } from "react";
 export default function Home() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 1; // change this to any speed (e.g., 2.0 for double speed, 0.5 for half speed)
+    }
+  }, []);
   return (
     <>
       <Layout pageTitle="Acceuil">
-        <div className="flex justify-center ">
+        <div className="relative h-screen flex items-center justify-center">
           <video
-            className="relative "
+            ref={videoRef}
+            className="absolute top-0 left-0 w-full h-full object-cover brightness-90"
             src="/images/vid.mp4"
             autoPlay={true}
             muted={true}
             loop
           ></video>
+          {/* <img
+            src="/images/hero1.jpg"
+            className="absolute top-0 left-0 w-full h-full object-cover "
+            alt=""
+          /> */}
 
           {/* <div className="hero-overlay bg-opacity-60"></div> */}
-          <div className="max-w-md text-center  absolute  text-white top-24">
-            <h1 className="mb-5 text-3xl font-bold">
+          <div className=" w-80 md:w-2/6  absolute   top-24 md:top-28 text-center">
+            <h1 className="mb-5 text-4xl drop-shadow-xl text-white">
               Cooptens, créateur d'opportunités
             </h1>
+            <h3 className="drop-shadow-md text-lg mb-5 text-white">
+              Cabinet de conseil en Ressources Humaines, spécialisé dans le
+              recrutement de Cadres
+            </h3>
 
-            <div className=" flex justify-evenly">
+            <div className=" flex justify-evenly text-white">
               <Link href={"/candidants"}>
-                <button className="bg-primary p-2 px-3 rounded-lg text-xl">
+                <button className="bg-sky-500/100 bg-primary p-2 px-3 rounded-xl text-xl drop-shadow-md">
                   Candidants
                 </button>
               </Link>
               <Link href={"/expertise"}>
-                <button className="bg-primary p-2 px-3 rounded-lg text-xl">
+                <button className="bg-sky-500/100  bg-primary p-2 px-3 rounded-xl text-xl drop-shadow-md">
                   Entreprises
                 </button>
               </Link>
             </div>
           </div>
         </div>
-        <section className="text-center p-5">
-          <h2 className="text-2xl">
+        {/* <section className="text-center p-5">
+          <h2 className="text-1xl">
             Cabinet de conseil en Ressources Humaines, spécialisé dans le
             recrutement de Cadres
           </h2>
-        </section>
+        </section> */}
         <div className="hero bg-base-200 min-h-screen">
           <div className="hero-content flex-col lg:flex-row-reverse">
             <div className="text-center lg:text-left">

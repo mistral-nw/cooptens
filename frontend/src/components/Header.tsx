@@ -1,16 +1,12 @@
-import Link from "next/link";
-import Image from "next/image";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import qs from "query-string";
+import { useLogoutMutation, useProfileQuery } from "@/graphql/generated/schema";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import Logo from "../assets/logoSVG-01.svg";
-import {
-  useLoginMutation,
-  useLogoutMutation,
-  useProfileQuery,
-} from "@/graphql/generated/schema";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
+import LogoBlack from "../assets/logoBlack.svg";
+import LogoWhite from "../assets/logowhite.svg";
 
 // import { useCategoriesQuery } from "@/graphql/generated/schema";
 // const router = useRouter();
@@ -31,23 +27,36 @@ export default function Header() {
     errorPolicy: "ignore",
   });
 
+  const pathname = usePathname();
+  const logoSrc =
+    pathname == "/opportunities" || mobileMenuOpen ? LogoBlack : LogoWhite;
+
+  const colors = ["text-white", "text-gray-900"];
+  const textColor = mobileMenuOpen
+    ? colors[1] // If the mobile menu is open, use the color for the mobile menu
+    : pathname === "/opportunities"
+    ? colors[1] // If we're on the /opportunities page, use the second color
+    : colors[0]; // Otherwise, use the default color (text-white)ss
+
   return (
     <>
-      {/* <header className="fixed inset-x-0 top-0 z-50 backdrop-blur-xl "> */}
-      <header className="sticky inset-x-0 top-0 z-50 backdrop-blur-xl ">
+      <header className="fixed inset-x-0 top-0 z-50 backdrop-blur-xl ">
+        {/* <header className=" sticky top-0 z-50 backdrop-blur-xl"> */}
         {/* <nav className="flex items-center justify-between p-6 lg:px-8 " aria-label="Global"> */}
+
         <nav
-          className="flex items-center justify-between p-6 lg:px-8"
+          className="  flex items-center justify-between p-4 lg:px-8 "
           aria-label="Global"
         >
-          <div className="flex lg:flex-1">
+          <div className=" flex lg:flex-1 ">
             <a href="#" className="-m-1.5 p-1.5">
-              <span className="sr-only">Your Company</span>
+              <span className="sr-only">Cooptens</span>
+              {/* <p>{pathname}</p> */}
               <Link href={"/"}>
                 <Image
                   priority={true}
-                  src={Logo}
-                  className="w-28 max-w-lg"
+                  src={logoSrc}
+                  className="w-28 md:w-44 drop-shadow-mds"
                   alt="logo"
                 />
               </Link>
@@ -56,14 +65,16 @@ export default function Header() {
           <div className="flex lg:hidden ">
             <button
               type="button"
-              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+              className={`-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 ${textColor}`}
+              // className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-white"
+
               onClick={() => setMobileMenuOpen(true)}
             >
               <span className="sr-only">Open main menu</span>
               <Bars3Icon className="h-6 w-6" aria-hidden="true" />
             </button>
           </div>
-          <div className="hidden lg:flex lg:gap-x-12  mx-3">
+          <div className="hidden lg:flex lg:gap-x-12  mx-3 ">
             {navigation.map((item) => (
               <>
                 {item.name === "ADMIN PANEL" &&
@@ -71,7 +82,7 @@ export default function Header() {
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="text-sm font-semibold leading-6 text-gray-900"
+                    className={`text-sm font-semibold leading-6 ${textColor}`}
                   >
                     {item.name}
                   </Link>
@@ -86,7 +97,7 @@ export default function Header() {
                 className="text-sm font-semibold leading-6 text-gray-900"
               >
                 <button
-                  className="btn btn-primary text-white w-full"
+                  className={`btn btn-primary ${textColor} w-full`}
                   onClick={async () => {
                     await logout();
                     client.resetStore();
@@ -115,12 +126,12 @@ export default function Header() {
           <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
             <div className="flex items-center justify-between">
               <a href="#" className="-m-1.5 p-1.5">
-                <span className="sr-only">Your Company</span>
+                <span className="sr-only">Cooptens</span>
                 <Link href={"/"}>
                   <Image
                     priority={true}
-                    src={Logo}
-                    className="w-28 max-w-lg"
+                    src={logoSrc}
+                    className={` w-28 max-w-lg `}
                     alt="logo"
                   />
                 </Link>
