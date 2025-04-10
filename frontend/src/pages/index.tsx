@@ -13,13 +13,14 @@ export default function Home() {
   return (
     <>
       <Layout pageTitle="Acceuil">
-        <div className="relative h-screen flex items-center justify-center">
+        <div className="relative h-screen flex items-center justify-center w-screen">
           <video
             ref={videoRef}
             className="absolute top-0 left-0 w-full h-full object-cover brightness-90"
             src="/images/vid.mp4"
             autoPlay={true}
             muted={true}
+            playsInline={true}
             loop
           ></video>
           {/* <img
