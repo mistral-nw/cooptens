@@ -29,7 +29,9 @@ export default function Header() {
 
   const pathname = usePathname();
   const logoSrc =
-    pathname == "/opportunities" || mobileMenuOpen ? LogoBlack : LogoWhite;
+    pathname == "/opportunities" || mobileMenuOpen || pathname == "/admin"
+      ? LogoBlack
+      : LogoWhite;
 
   const colors = ["text-white", "text-gray-900"];
   const textColor = mobileMenuOpen
@@ -109,7 +111,7 @@ export default function Header() {
             ) : (
               <Link
                 href="/login"
-                className="text-sm font-semibold leading-6 text-gray-900"
+                className={`text-sm font-semibold leading-6 ${textColor}`}
               >
                 Log in <span aria-hidden="true">&rarr;</span>
               </Link>

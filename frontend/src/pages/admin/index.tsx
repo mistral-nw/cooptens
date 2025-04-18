@@ -42,7 +42,7 @@ export default function AddJobAdmin({}: NewJobInput) {
   return (
     <>
       <Layout pageTitle={"Admin panel"}>
-        <div className="flex justify-center">
+        <div className="flex justify-center py-40">
           <div className="rounded-lg  p-8 shadow-lg lg:col-span-3 lg:p-12 lg:w-1/2 ">
             <h1 className="mb-7">Craete a new job ouprtunity!</h1>
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -159,7 +159,8 @@ export default function AddJobAdmin({}: NewJobInput) {
             </form>
           </div>
         </div>
-        <div className="flex flex-col  justify-center gap-20 mt-8">
+        <div className="flex flex-col  justify-center gap-20 p-12 ">
+          <h5 className="font-semibold">Jobs archived</h5>
           <div className="flex flex-col gap-7">
             {jobs.map((job, idx) => {
               return <div className="">{job.mission}</div>;

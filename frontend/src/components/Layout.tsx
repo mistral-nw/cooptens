@@ -2,6 +2,7 @@ import Head from "next/head";
 import Header from "./Header";
 import { ReactNode } from "react";
 import Footer from "./Footer";
+import LogoAnimation from "./LogoAnimation";
 
 export default function Layout({
   children,

@@ -49,10 +49,12 @@ export async function main() {
     jobTitle: "DÉVELOPPEUR FONCIER H/F",
     location: "Paris",
     active: true,
-    mission: "work hard ,play strong ,fish the fish, eat the creat , neat!",
-    profil: "someone not beit",
-    salary: "1 000 000",
-    jobType: "slavery",
+    mission:
+      "Rattaché(e) au Directeur de la société, vous prenez en charge la comptabilité générale de l’ensemble du groupe (promoteur/foncière) et vos missions seront les suivantes :",
+    profil:
+      "Vous vous reconnaissez à travers cette opportunité et souhaitez relever un nouveau challenge, envoyez-nous votre candidature !",
+    salary: "Rémunération fixe (à négocier selon profil)",
+    jobType: "CDI",
   });
   await job.save();
 

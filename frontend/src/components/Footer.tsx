@@ -2,18 +2,34 @@ export default function Footer() {
   return (
     <footer className="footer bg-base-200 text-base-content p-10">
       <nav>
-        <h6 className="footer-title">Services</h6>
-        <a className="link link-hover">Branding</a>
-        <a className="link link-hover">Design</a>
-        <a className="link link-hover">Marketing</a>
-        <a className="link link-hover">Advertisement</a>
+        <h6 className="footer-title">Cooptens</h6>
+        <a className="link link-hover " href="/expertise">
+          NOTRE EXPERTISE
+        </a>
+        <a className="link link-hover " href="/candidants">
+          CANDIDANTS
+        </a>
+        <a className="link link-hover " href="/opportunities">
+          OPPORTUNITÉS
+        </a>
+        <a className="link link-hover " href="/contact">
+          CONTACT
+        </a>
       </nav>
       <nav>
-        <h6 className="footer-title">Company</h6>
-        <a className="link link-hover">About us</a>
-        <a className="link link-hover">Contact</a>
-        <a className="link link-hover">Jobs</a>
-        <a className="link link-hover">Press kit</a>
+        <h6 className="footer-title">Créateur d’opportunités</h6>
+        <a className="link link-hover " href="/candidants">
+          Envoyez-nous votre CV
+        </a>{" "}
+        <a className="link link-hover " href="/candidants">
+          Recommandez un talent
+        </a>{" "}
+        <a className="link link-hover " href="/">
+          Retour à la page d’accueil
+        </a>{" "}
+        <a className="link link-hover " href="/">
+          Mentions légales et politique de confidentialité
+        </a>
       </nav>
       <nav>
         <h6 className="footer-title">Legal</h6>

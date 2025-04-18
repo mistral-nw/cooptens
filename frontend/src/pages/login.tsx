@@ -5,6 +5,7 @@ import {
   useLogoutMutation,
   useProfileQuery,
 } from "@/graphql/generated/schema";
+import router from "next/router";
 import { FormEvent, useState } from "react";
 
 function validatePassword(p: string) {
@@ -29,6 +30,8 @@ export default function Login() {
     errorPolicy: "ignore",
   });
 
+  // {currentUser?.profile.role? = "admin" ? : "" }
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     setError("");
 
@@ -52,6 +55,14 @@ export default function Login() {
     console.log(formJSON);
   };
   console.log(currentUser);
+
+  if (currentUser?.profile.role == "admin") {
+    router.push("/admin"); // Redirect to dashboard page
+  } else {
+    // Handle error scenario
+    console.error("Form submission failed");
+  }
+
   return (
     <Layout pageTitle="Se connecter">
       {currentUser ? (
@@ -69,44 +80,48 @@ export default function Login() {
         </div>
       ) : (
         <>
-          <h1 className="pt-6 pb-6 text-2xl">Se connecter</h1>
+          <div className="flex justify-center py-36">
+            <div className=" max-w-md justify-center flex flex-col p-10">
+              <h1 className="pt-6 pb-6 text-2xl">Se connecter</h1>
 
-          <form onSubmit={handleSubmit} className="pb-12">
-            <div className="flex flex-wrap gap-6 mb-3">
-              <div className="form-control w-full max-w-xs">
-                <label className="label" htmlFor="email">
-                  <span className="label-text">Email</span>
-                </label>
-                <input
-                  required
-                  type="email"
-                  name="email"
-                  id="email"
-                  autoComplete=""
-                  className="input input-bordered w-full max-w-xs"
-                />
-              </div>
+              <form onSubmit={handleSubmit} className="pb-12">
+                <div className="flex flex-wrap gap-6 mb-3">
+                  <div className="form-control w-full max-w-xs">
+                    <label className="label" htmlFor="email">
+                      <span className="label-text">Email</span>
+                    </label>
+                    <input
+                      required
+                      type="email"
+                      name="email"
+                      id="email"
+                      autoComplete=""
+                      className="input input-bordered w-full max-w-xs"
+                    />
+                  </div>
 
-              <div className="form-control w-full max-w-xs">
-                <label className="label" htmlFor="password">
-                  <span className="label-text">Mot de passe</span>
-                </label>
+                  <div className="form-control w-full max-w-xs">
+                    <label className="label" htmlFor="password">
+                      <span className="label-text">Mot de passe</span>
+                    </label>
 
-                <input
-                  type="password"
-                  name="password"
-                  id="password"
-                  required
-                  className="input input-bordered w-full max-w-xs"
-                />
-              </div>
+                    <input
+                      type="password"
+                      name="password"
+                      id="password"
+                      required
+                      className="input input-bordered w-full max-w-xs"
+                    />
+                  </div>
+                </div>
+
+                {error !== "" && <pre className="text-red-700">{error}</pre>}
+                <button className="btn btn-primary text-white mt-12 w-full">
+                  Se connecter
+                </button>
+              </form>
             </div>
-
-            {error !== "" && <pre className="text-red-700">{error}</pre>}
-            <button className="btn btn-primary text-white mt-12 w-full">
-              Se connecter
-            </button>
-          </form>
+          </div>
         </>
       )}
     </Layout>
